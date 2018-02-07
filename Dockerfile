@@ -5,7 +5,7 @@ MAINTAINER Josef (kwart) Cacek <josef.cacek@gmail.com>
 ENV SIMULATOR_HOME=/hazelcast-simulator \
     SIMULATOR_BRANCH=master
 
-COPY bashrc /root/.bashrc
+COPY simulator-profile.sh /etc/profile.d/
 
 WORKDIR /root
 
