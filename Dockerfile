@@ -14,7 +14,7 @@ RUN echo "Setting edge repositories" \
     && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >>/etc/apk/repositories \
     && apk upgrade --update-cache --available \
     && echo "Installing APK packages" \
-    && apk add bash openjdk8 openssh rsync dstat curl maven gnuplot aws-cli aws-cli-bash-completion \
+    && apk add bash openjdk8 git openssh rsync dstat curl maven gnuplot aws-cli aws-cli-bash-completion \
     && echo "Installing Hazelcast Simulator" \
     && wget https://github.com/hazelcast/hazelcast-simulator/archive/${SIMULATOR_BRANCH}.zip \
     && unzip -q ${SIMULATOR_BRANCH}.zip \
@@ -22,8 +22,8 @@ RUN echo "Setting edge repositories" \
     && mvn -f hazelcast-simulator-${SIMULATOR_BRANCH}/pom.xml install -DskipTests -Denforcer.skip -Dcheckstyle.skip \
     && unzip -q  hazelcast-simulator-${SIMULATOR_BRANCH}/dist/target/hazelcast-simulator-*-dist.zip -d / \
     && ln -s /hazelcast-simulator-* ${SIMULATOR_HOME} \
-    && PATH=${SIMULATOR_HOME}/bin:${PATH} simulator-wizard --createWorkDir tests \
-    && echo "Cleaning caches" \
+    && echo "Clean-up" \
+    && rm -rf hazelcast-simulator-${SIMULATOR_BRANCH} \
     && rm -rf /root/.m2 \
     && rm -rf /var/cache/apk/*
 
