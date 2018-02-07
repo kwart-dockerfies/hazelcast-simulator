@@ -24,7 +24,7 @@ RUN echo "Setting edge repositories" \
     && ln -s /hazelcast-simulator-* ${SIMULATOR_HOME} \
     && echo "Clean-up" \
     && rm -rf hazelcast-simulator-${SIMULATOR_BRANCH} \
-    && rm -rf /root/.m2 \
+    && echo " Skipping: rm -rf /root/.m2" \
     && rm -rf /var/cache/apk/*
 
 CMD ["/bin/bash"]
