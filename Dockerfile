@@ -11,7 +11,7 @@ WORKDIR /root
 
 RUN apk update \
     && echo "Installing APK packages" \
-    && apk add bash openjdk8 git openssh rsync dstat curl maven gnuplot aws-cli aws-cli-bash-completion \
+    && apk add bash openjdk8 git openssh rsync curl maven gnuplot aws-cli aws-cli-bash-completion \
     && echo "Installing Hazelcast Simulator" \
     && wget https://github.com/hazelcast/hazelcast-simulator/archive/${SIMULATOR_BRANCH}.zip \
     && unzip -q ${SIMULATOR_BRANCH}.zip \
